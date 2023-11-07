@@ -10,10 +10,11 @@
  */
 #include "../include/ROS2_Beginner_Tutorials/publisher_func.hpp"
 
-void MinimalPublisher::timer_callback()
-    {
+void MinimalPublisher::timer_callback() {
       auto message = std_msgs::msg::String();
-      message.data = "Hello, I am ROS Humble, the LTS Version :p ! " + std::to_string(count_++);
-      RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+      message.data = "Hello, I am ROS Humble, the LTS Version :p ! "
+                      + std::to_string(count_++);
+      RCLCPP_INFO(this->get_logger(),
+                  "Publishing: '%s'", message.data.c_str());
       publisher_->publish(message);
-    }
+      }
