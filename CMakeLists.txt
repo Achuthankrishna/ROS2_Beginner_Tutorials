@@ -14,6 +14,9 @@ find_package(std_msgs REQUIRED)
 # find_package(<dependency> REQUIRED)
 add_executable(talker src/publisher_func.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
+install(TARGETS       #UPDATED
+  talker
+  DESTINATION lib/${PROJECT_NAME})
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
