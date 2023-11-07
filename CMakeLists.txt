@@ -12,7 +12,8 @@ find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-
+add_executable(talker src/publisher_func.cpp)
+ament_target_dependencies(talker rclcpp std_msgs)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
