@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(ROS2_Beginner_Tutorials)
+project(ros2_beginner_tutorials)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -12,7 +12,7 @@ find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-add_executable(talker src/publisher_func.cpp)
+add_executable(talker src/publisher_func.cpp src/p_main.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
 install(TARGETS       #UPDATED
   talker
