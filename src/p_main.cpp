@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2023
  * 
  */
+#include <iostream>
 #include "../include/ROS2_Beginner_Tutorials/publisher_func.hpp"
 int main(int argc, char * argv[]) {
   rclcpp::init(argc, argv);
