@@ -34,9 +34,19 @@ class MinimalPublisher : public rclcpp::Node
       500ms, std::bind(&MinimalPublisher::timer_callback, this));
     }
   private:
+  /**
+   * @brief Function for timer callback
+   * 
+   */
   void timer_callback();
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
     size_t count_;
+  /**
+   * @brief Callback to trigger the service to change the message 
+   * 
+   */
+  void service_callback(const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
+          std::shared_ptr<example_interfaces::srv::AddTwoInts::Response>      response)
 };
 
