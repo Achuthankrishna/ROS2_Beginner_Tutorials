@@ -33,6 +33,16 @@ Finally source your workspace using the command ```source install/setup.bash```
    ``` $ source install/ros2_beginner_tutorials/share/ros2_beginner_tutorials/local_setup.bash```
    and then run,
    ```ros2 service call /change_string ros2_beginner_tutorials/srv/ChangeString "{update: 'LIBERTY TO ALL'}" ```
+## Launch File
+ - To Run the Launch file node,simply type :
+
+    ```ros2 launch ros2_beginner_tutorials launch.py new_mesg:="I am Iron Ironwiyi"```
+
+    where new_mesg is argument that modifies Talker node.
+
 ## Outputs
 In case if there are dependency errors while building : Since this was done in WSl2 and there might be changes when it comes to linux, please look at the output given here :
-![Demo GIF](./ServiceOutput.gif)
+![Demo GIF](./Results/ServiceOutput.gif)
+## Rqt Console
+The following is the rqt_console output when launch file launched
+![RQT](./Results/rqt.png)
