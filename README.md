@@ -31,7 +31,9 @@ Finally source your workspace using the command ```source install/setup.bash```
     ```$ ros2 run ros2_beginner_tutorials listener```
 - In a 3rd Terminal , source using 
    ``` $ source install/ros2_beginner_tutorials/share/ros2_beginner_tutorials/local_setup.bash```
+   
    and then run,
+   
    ```ros2 service call /change_string ros2_beginner_tutorials/srv/ChangeString "{update: 'LIBERTY TO ALL'}" ```
 ## Launch File
  - To Run the Launch file node,simply type :
