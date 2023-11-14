@@ -19,6 +19,7 @@ void MinimalSubscriber::topic_callback(const std_msgs::msg::String
         RCLCPP_WARN(rclcpp::get_logger("rclcpp"), "Empty message data!");
       }
       RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+      RCLCPP_FATAL_ONCE(this->get_logger(), "FATAL LOG CHECK");
 }
 
 
