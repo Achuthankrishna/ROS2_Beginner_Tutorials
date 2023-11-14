@@ -48,16 +48,11 @@ void MinimalPublisher::service_callback(
     const std::shared_ptr<ros2_beginner_tutorials::srv::ChangeString::Request> request,
     std::shared_ptr<ros2_beginner_tutorials::srv::ChangeString::Response> response)
 {
-    RCLCPP_WARN(rclcpp::get_logger("rclcpp"),
-                "Incoming request\nnew_string: %s", request->update.c_str());
-    response->status = "STRING CHANGED!";
-    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%s]",
-                response->status.c_str());
-
+    RCLCPP_WARN(rclcpp::get_logger("rclcpp"), "Incoming request\nnew_string: %s", request->update.c_str());
     message.data = request->update;
-
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
     publisher_->publish(message);
+    response->status = "Changed";
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%s]", response->status.c_str());
 }
-
 
