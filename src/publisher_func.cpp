@@ -18,7 +18,16 @@
 MinimalPublisher::MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
 {
-      message.data = "Hello, I am ROS Humble, the LTS Version :p ! " + std::to_string(count_++);
+//     std::string new_mesg_param = this->get_parameter("new_mesg").as_string();
+    this->declare_parameter<std::string>("new_mesg", "Hello, I am ROS Humble, the LTS Version :p ! ");
+    std::string new_mesg_param = this->get_parameter("new_mesg").as_string();
+
+    if (!new_mesg_param.empty()) {
+        message.data = new_mesg_param;
+    } else {
+        message.data = "Hello, I am ROS Humble, the LTS Version :p ! ";
+    }
+      // message.data = "Hello, I am ROS Humble, the LTS Version :p ! " + std::to_string(count_++);
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
 
