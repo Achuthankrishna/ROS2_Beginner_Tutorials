@@ -22,6 +22,7 @@ add_executable(listener src/subscriber_func.cpp src/s_main.cpp)
 ament_target_dependencies(listener rclcpp std_msgs)
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
 target_link_libraries(talker "${cpp_typesupport_target}")
+target_link_libraries(listener "${cpp_typesupport_target}")
 install(TARGETS       #UPDATED
   talker
   listener

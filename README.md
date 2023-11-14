@@ -16,10 +16,10 @@ Finally source your workspace using the command ```source install/setup.bash```
 ### Execution
  - To Run the publisher node,simply type :
 
-    ```$ ros2 run beginner_tutorials talker```
+    ```$ ros2 run ros2_beginner_tutorials talker```
 
  - To Run the Subscriber node, open a new terminal window parallely and simply type :
 
-    ```$ ros2 run beginner_tutorials listener```
+    ```$ ros2 run ros2_beginner_tutorials listener```
 
 

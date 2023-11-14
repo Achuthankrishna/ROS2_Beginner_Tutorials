@@ -8,44 +8,31 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#pragma once 
+#pragma once
+
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
-
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
+#include "ros2_beginner_tutorials/srv/change_string.hpp"
+
 using namespace std::chrono_literals;
 
-/**
- * @brief Class for Publisher 
- * 
- */
 class MinimalPublisher : public rclcpp::Node
 {
-  public:
-    MinimalPublisher()
-    : Node("minimal_publisher"), count_(0)
-    {
-      publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
-      timer_ = this->create_wall_timer(
-      500ms, std::bind(&MinimalPublisher::timer_callback, this));
-    }
-  private:
-  /**
-   * @brief Function for timer callback
-   * 
-   */
-  void timer_callback();
+public:
+    MinimalPublisher();
+
+private:
+    void timer_callback();
+    void service_callback(const std::shared_ptr<ros2_beginner_tutorials::srv::ChangeString::Request> request,
+                          std::shared_ptr<ros2_beginner_tutorials::srv::ChangeString::Response> response);
+
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
     size_t count_;
-  /**
-   * @brief Callback to trigger the service to change the message 
-   * 
-   */
-  // void service_callback(const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
-  //         std::shared_ptr<example_interfaces::srv::AddTwoInts::Response>      response)
+    std_msgs::msg::String message;
+    rclcpp::Service<ros2_beginner_tutorials::srv::ChangeString>::SharedPtr service_;
 };
-
