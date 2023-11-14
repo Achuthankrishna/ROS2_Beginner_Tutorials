@@ -46,7 +46,7 @@ class MinimalPublisher : public rclcpp::Node
    * @brief Callback to trigger the service to change the message 
    * 
    */
-  void service_callback(const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
-          std::shared_ptr<example_interfaces::srv::AddTwoInts::Response>      response)
+  // void service_callback(const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
+  //         std::shared_ptr<example_interfaces::srv::AddTwoInts::Response>      response)
 };
 
