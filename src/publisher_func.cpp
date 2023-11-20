@@ -25,6 +25,7 @@ MinimalPublisher::MinimalPublisher()
 
     if (!new_mesg_param.empty()) {
         message.data = new_mesg_param;
+        RCLCPP_ERROR_STREAM (this->get_logger(), "NO NEW MESSAGE");
     } else {
       message.data = "Hello, I am ROS Humble, the LTS Version :p ! ";}
       // message.data = "Hello, I am ROS Humble, the LTS Version :p ! " +
@@ -46,6 +47,7 @@ MinimalPublisher::MinimalPublisher()
  * 
  */
 void MinimalPublisher::timer_callback() {
+
       RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
       publisher_->publish(message);
 }
@@ -64,6 +66,9 @@ void MinimalPublisher::service_callback(
     RCLCPP_WARN(rclcpp::get_logger("rclcpp"),
     "Incoming request\nnew_string: %s", request->update.c_str());
     message.data = request->update;
+      RCLCPP_DEBUG_STREAM (this->get_logger(), "DEBUG STREAM");
+      RCLCPP_ERROR_STREAM (this->get_logger(), "ERROR CHECK");
+      RCLCPP_FATAL_STREAM (this->get_logger(), "FATAL CHECK");
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
     publisher_->publish(message);
     response->status = "Changed";
