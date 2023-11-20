@@ -17,6 +17,8 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include "ros2_beginner_tutorials/srv/change_string.hpp"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2_ros/static_transform_broadcaster.h"
 
 using namespace std::chrono_literals;
 
@@ -35,4 +37,6 @@ private:
     size_t count_;
     std_msgs::msg::String message;
     rclcpp::Service<ros2_beginner_tutorials::srv::ChangeString>::SharedPtr service_;
+    void make_transforms();
+    std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_static_broadcaster_;
 };
