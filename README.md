@@ -25,6 +25,9 @@ Finally source your workspace using the command ```source install/setup.bash```
  - To Run the publisher node,simply type :
 
     ```$ ros2 run ros2_beginner_tutorials talker```
+    
+   To run debug log, run 
+   ```ros2 run  cpp_pubsub talker --ros-args  --log-level DEBUG```
 
  - To Run the Subscriber node, open a new terminal window parallely and simply type :
 
@@ -36,6 +39,8 @@ Finally source your workspace using the command ```source install/setup.bash```
    and then run,
    
    ```ros2 service call /change_string ros2_beginner_tutorials/srv/ChangeString "{update: 'LIBERTY TO ALL'}" ```
+
+
 ## Launch File
  - To Run the Launch file node,simply type :
 
