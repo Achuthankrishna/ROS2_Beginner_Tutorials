@@ -94,7 +94,7 @@ void MinimalPublisher::make_transforms()
       t.transform.translation.y = 0;
       t.transform.translation.z = 0;
       tf2::Quaternion q;
-      q.setRPY(0, 0, 10);
+      q.setRPY(0, 0, 90);
       t.transform.rotation.x = q.x();
       t.transform.rotation.y = q.y();
       t.transform.rotation.z = q.z();
