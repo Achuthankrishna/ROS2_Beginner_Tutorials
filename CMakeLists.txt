@@ -9,6 +9,9 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ChangeString.srv"
@@ -17,7 +20,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 add_executable(talker src/publisher_func.cpp src/p_main.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
+ament_target_dependencies(talker rclcpp std_msgs geometry_msgs tf2 tf2_ros)
 add_executable(listener src/subscriber_func.cpp src/s_main.cpp)
 ament_target_dependencies(listener rclcpp std_msgs)
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
