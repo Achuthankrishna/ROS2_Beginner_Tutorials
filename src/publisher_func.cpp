@@ -10,6 +10,7 @@
  */
 
 #include "../include/ROS2_Beginner_Tutorials/publisher_func.hpp"
+#include "geometry_msgs/msg/transform_stamped.hpp"
 
 /**
  * @brief Construct a new Minimal Publisher:: Minimal Publisher object
@@ -31,6 +32,8 @@ MinimalPublisher::MinimalPublisher()
       // message.data = "Hello, I am ROS Humble, the LTS Version :p ! " +
       // std::to_string(count_++);
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+    tf_static_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
+      this->make_transforms();
     timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::
                                     timer_callback, this));
 
@@ -40,7 +43,11 @@ MinimalPublisher::MinimalPublisher()
                                     std::placeholders::_2);
     service_ = this->create_service<ros2_beginner_tutorials::
       srv::ChangeString>(
-      "change_string", serviceCallbackPtr); }
+      "change_string", serviceCallbackPtr); 
+       }
+
+//       MinimalPublisher::tf_static_broadcaster_  =
+//     std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
 
 /**
  * @brief Timer Callback
@@ -75,3 +82,26 @@ void MinimalPublisher::service_callback(
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"),
     "sending back response: [%s]", response->status.c_str()); }
 
+void MinimalPublisher::make_transforms()
+{
+      geometry_msgs::msg::TransformStamped t;
+
+      t.header.stamp = this->get_clock()->now();
+      t.header.frame_id = "world";
+      t.child_frame_id = "talker";
+
+      t.transform.translation.x = 1;
+      t.transform.translation.y = 0;
+      t.transform.translation.z = 0;
+      tf2::Quaternion q;
+      q.setRPY(0, 0, 10);
+      t.transform.rotation.x = q.x();
+      t.transform.rotation.y = q.y();
+      t.transform.rotation.z = q.z();
+      t.transform.rotation.w = q.w();
+
+      RCLCPP_INFO(this->get_logger(), "Broadcasting transformation from world to talker.");
+      RCLCPP_WARN(this->get_logger(), "Broadcasting transformation from world to talker.");
+
+      tf_static_broadcaster_->sendTransform(t);
+}
