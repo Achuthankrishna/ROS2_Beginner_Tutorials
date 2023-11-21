@@ -76,7 +76,12 @@ Finally source your workspace using the command ```source install/setup.bash```
    Then play the rosbag file using the code 
    ```ros2 bag play /src/ROS2_Beginner_Tutorials/Results/Bags/Bags_0.db3```
 
- - To play the recorded files in a new terminal source the project:   
+ ## CPP Lint and Check
+  Go into src and proect directory and type for CPP LINT result
+  ```cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" )```
+  
+  And the following line for cpp check
+  ```cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" )```
 ## Outputs
 In case if there are dependency errors while building : Since this was done in WSl2 and there might be changes when it comes to linux, please look at the output given here :
 ![Demo GIF](./Results/ServiceOutput.gif)
