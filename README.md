@@ -82,5 +82,5 @@ In case if there are dependency errors while building : Since this was done in W
 ![Demo GIF](./Results/ServiceOutput.gif)
 ## Rqt Console
 The following is the rqt_console output when launch file launched
-![RQT](./Results/rqt2.png)
+![RQT](./Results/rqt22.png)
 ![RQT](./Results/rqt3.png)
