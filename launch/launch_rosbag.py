@@ -20,7 +20,7 @@ from launch.conditions import IfCondition
 
 def generate_launch_description():
     change_msg=DeclareLaunchArgument('new_mesg',default_value='I am updating to Iron Ironwiyi')
-    rbag=DeclareLaunchArgument('rosbag_record',default_value=TextSubstitution(text="True"),choices=['True','False'],description="Recording ROS bag")
+    rbag=DeclareLaunchArgument('bag_record',default_value=TextSubstitution(text="True"),choices=['True','False'],description="Recording ROS bag")
 
     return LaunchDescription([
 
@@ -35,11 +35,11 @@ def generate_launch_description():
         Node(
             package='ros2_beginner_tutorials',
             executable='listener'
-        )
+        ),
         # ),
-        # ExecuteProcess(
-        #     condition=IfCondition(LaunchConfiguration('rosbag_record')),
-        #     cmd=['ros2', 'bag', 'record', '-a', '--output', '/home/achukrish/ros2_ws/src/ROS2_Beginner_Tutorials/Results/Bags'],
-        #     shell=True
-        # )
+        ExecuteProcess(
+            condition=IfCondition(LaunchConfiguration('bag_record')),
+            cmd=['ros2', 'bag', 'record', '-a', '--output', "./src/ROS2_Beginner_Tutorials/Results/Bags"],
+            shell=True
+        )
     ])

@@ -123,14 +123,11 @@ TEST_F(TaskPlanningFixture, TrueIsTrueTest) {
  */
 TEST_F(TaskPlanningFixture, testTalkerPublishesMessage)
 {
-  // Expected message to be published
   const std::string expected_message = "Hello, I am ROS Humble, the LTS Version :p !";
 
-  // Create subscriber to listen to the talker topic
   auto subscriber = node_->create_subscription<std_msgs::msg::String>(
     "topic", 10,
     [expected_message](const std_msgs::msg::String::SharedPtr msg) {
-      // Validate the received message
       EXPECT_EQ(msg->data, expected_message);
     });
 }
