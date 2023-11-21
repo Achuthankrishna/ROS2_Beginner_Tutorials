@@ -78,9 +78,11 @@ Finally source your workspace using the command ```source install/setup.bash```
 
  ## CPP Lint and Check
   Go into src and proect directory and type for CPP LINT result
+
   ```cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" )```
   
   And the following line for cpp check
+
   ```cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" )```
 ## Outputs
 In case if there are dependency errors while building : Since this was done in WSl2 and there might be changes when it comes to linux, please look at the output given here :
