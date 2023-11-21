@@ -50,9 +50,9 @@ Finally source your workspace using the command ```source install/setup.bash```
 
 ## Publish TF Frames
 
-   # Using tf2 echo
+   ## Using tf2 echo
    ```ros2 run tf2_ros tf2_echo world talker```   
-   # tf2 View Frames
+   ## tf2 View Frames
    ```ros2 run tf2_tools view_frames```
 ## Running Tests
 ```bash
