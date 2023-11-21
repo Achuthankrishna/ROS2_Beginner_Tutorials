@@ -50,9 +50,9 @@ Finally source your workspace using the command ```source install/setup.bash```
 
 ## Publish TF Frames
 
-   # Using tf2 echo
+   ## Using tf2 echo
    ```ros2 run tf2_ros tf2_echo world talker```   
-   # tf2 View Frames
+   ## tf2 View Frames
    ```ros2 run tf2_tools view_frames```
 ## Running Tests
 ```bash
@@ -69,7 +69,9 @@ Finally source your workspace using the command ```source install/setup.bash```
 
     where new_mesg is argument that modifies Talker node and bag_record records the topics.
      ``` $ source install/ros2_beginner_tutorials/share/ros2_beginner_tutorials/local_setup.bash```
-    To Run the Subscriber node, open a new terminal window parallely and simply type :
+
+
+   To Run the Subscriber node, open a new terminal window parallely and simply type :
 
     ```$ ros2 run ros2_beginner_tutorials listener```
    
