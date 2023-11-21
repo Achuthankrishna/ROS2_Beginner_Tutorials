@@ -48,9 +48,39 @@ Finally source your workspace using the command ```source install/setup.bash```
 
     where new_mesg is argument that modifies Talker node.
 
+## Publish TF Frames
+
+   # Using tf2 echo
+   ```ros2 run tf2_ros tf2_echo world talker```   
+   # tf2 View Frames
+   ```ros2 run tf2_tools view_frames```
+## Running Tests
+```bash
+   colcon build --packages-select ros2_beginner_tutorials
+  colcon test --packages-select ros2_beginner_tutorials
+# with verbose
+  colcon test --event-handlers console_direct+ --packages-select ros2_beginner_tutorials
+```
+
+## Launch File For ROS Bag
+ - To Run the Launch file node,simply type :
+
+    ```ros2 launch ros2_beginner_tutorials launch_rosbag.py bag_record:="True" new_mesg:="testing ros bag files"```
+
+    where new_mesg is argument that modifies Talker node and bag_record records the topics.
+     ``` $ source install/ros2_beginner_tutorials/share/ros2_beginner_tutorials/local_setup.bash```
+    To Run the Subscriber node, open a new terminal window parallely and simply type :
+
+    ```$ ros2 run ros2_beginner_tutorials listener```
+   
+   Then play the rosbag file using the code 
+   ```ros2 bag play /src/ROS2_Beginner_Tutorials/Results/Bags/Bags_0.db3```
+
+ - To play the recorded files in a new terminal source the project:   
 ## Outputs
 In case if there are dependency errors while building : Since this was done in WSl2 and there might be changes when it comes to linux, please look at the output given here :
 ![Demo GIF](./Results/ServiceOutput.gif)
 ## Rqt Console
 The following is the rqt_console output when launch file launched
-![RQT](./Results/rqt.png)
+![RQT](./Results/rqt2.png)
+![RQT](./Results/rqt3.png)
