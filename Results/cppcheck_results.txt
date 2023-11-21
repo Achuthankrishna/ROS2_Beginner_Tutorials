@@ -1,9 +1,17 @@
 achukrish@AK07:~/ros2_ws/src/ROS2_Beginner_Tutorials$ cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" )
 Checking src/p_main.cpp ...
-1/4 files checked 10% done
+1/5 files checked 4% done
 Checking src/publisher_func.cpp ...
-2/4 files checked 69% done
+2/5 files checked 43% done
 Checking src/s_main.cpp ...
-3/4 files checked 80% done
+3/5 files checked 47% done
 Checking src/subscriber_func.cpp ...
-4/4 files checked 100% done
+4/5 files checked 55% done
+Checking test/test.cpp ...
+5/5 files checked 100% done
+test/test.cpp:15:0: style: The function 'SetUp' is never used. [unusedFunction]
+
+^
+test/test.cpp:30:0: style: The function 'TearDown' is never used. [unusedFunction]
+
+^

@@ -3,3 +3,4 @@ Done processing ./src/p_main.cpp
 Done processing ./src/publisher_func.cpp
 Done processing ./src/s_main.cpp
 Done processing ./src/subscriber_func.cpp
+Done processing ./test/test.cpp
